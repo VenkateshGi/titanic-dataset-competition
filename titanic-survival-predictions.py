@@ -99,15 +99,12 @@ titanic.sample()
 
 # Let's drop the columns that are not necessary 
 
-# In[14]:
-
 
 titanic.drop(columns=["Ticket","PassengerId","Cabin"], inplace = True)
 
 
 # Let's fill null values and refine our data
 
-# In[15]:
 
 
 titanic.isna().sum()
@@ -139,15 +136,7 @@ print (title[:3])
 print (titanic.Name[:3])
 titanic["title"] = title
 
-
-# In[18]:
-
-
 titanic.title.value_counts()
-
-
-# In[19]:
-
 
 using = dict(titanic.groupby("title").mean()["Age"])
 sns.barplot(x = list(using.keys()), y = list(using.values()))
@@ -341,15 +330,9 @@ target = model.predict(test_x)
 print (target[:4])
 print (test_x[:4])
 
-
-# In[40]:
-
-
 titanic_test = pd.read_csv("../input/test.csv")
 titanic_test = pd.DataFrame(titanic_test["PassengerId"])
 titanic_test["Survived"] = target
 titanic_test.head()
 titanic_test.to_csv("predictions.csv")
 
-
-# Is there any better approach to improve the accuracy?
